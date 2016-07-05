@@ -16,10 +16,10 @@ class Mastermind {
 		String response = null;
 		int[] validation = null;
 		
-		//generateCode();
-		code = "rbjv";
+		generateCode();
 		
 		if (displayCode) {
+			code = "rbjv";
 			System.out.println("Code : " + code);
 		}
 		
