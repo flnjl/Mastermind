@@ -16,7 +16,8 @@ class Mastermind {
 		String response = null;
 		int[] validation = null;
 		
-		generateCode();
+		//generateCode();
+		code = "rbjv";
 		
 		if (displayCode) {
 			System.out.println("Code : " + code);
@@ -95,22 +96,33 @@ class Mastermind {
 	 */
 	int[] checkResponse(String response) {
 		int i = 0;
+		int index = -1;
 		int[] validation = {0, 0}; // 0 : bonnes pièces & mauvaise position, 1 : bonnes pièces & bonne position
+		String codeCp = code;
 		
 		if (response.equals(code)) {
 			validation[1] = code.length();
 			return validation;
 		}
-		
-		for (i = 0; i < code.length(); i++) {
+		System.out.println(code);
+		for (i = 0; i < codeCp.length(); i++) {
 			if (response.charAt(i) == code.charAt(i)) {
 				validation[1]++;
+				
 				char[] responseTmp = response.toCharArray();
 				responseTmp[i] = ' ';
 				response = String.valueOf(responseTmp);
+				
+				char[] codeTmp = codeCp.toCharArray();
+				codeTmp[i] = ' ';
+				codeCp = String.valueOf(codeTmp);
 			}
-			else if (-1 != code.indexOf((int)response.charAt(i))) {
+			else if (-1 != (index = codeCp.indexOf((int)response.charAt(i)))) {
 				validation[0]++;
+				
+				char[] codeTmp = codeCp.toCharArray();
+				codeTmp[index] = ' ';
+				codeCp = String.valueOf(codeTmp);
 			}
 		}
 		
