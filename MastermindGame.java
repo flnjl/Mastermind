@@ -104,7 +104,7 @@ class Mastermind {
 			validation[1] = code.length();
 			return validation;
 		}
-		System.out.println(code);
+		
 		for (i = 0; i < codeCp.length(); i++) {
 			if (response.charAt(i) == code.charAt(i)) {
 				validation[1]++;
